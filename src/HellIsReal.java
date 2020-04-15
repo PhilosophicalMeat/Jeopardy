@@ -75,7 +75,7 @@ public class HellIsReal {
             System.out.print(topicNames[i]+"    |");
             for (int j = 0; j <boardArray[i].length ; j++) {
                 if(boardArray[i][j][3].equals("false")){
-                    System.out.print("["+(j+1)+"]"+boardArray[i][j][0]+"   |");
+                    System.out.print(boardArray[i][j][0]+"   |");
                 }
             }
             System.out.println();
