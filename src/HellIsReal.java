@@ -163,6 +163,56 @@ public class HellIsReal {
             System.out.println("INVALID ENTRY; please enter a valid topic");
             getPlayerRequest();
         }
-        viewPlayerScores();
+        checkRemainingQuestions();
     }
+
+    //METHOD FOR CHECKING IF ALL OF THE QUESTIONS HAVE BEEN SELECTED
+    private static void checkRemainingQuestions(){
+        boolean hasRemaining = false;
+        for (int i = 0; i < boardArray.length; i++) {
+            for (int j = 0; j < boardArray[i].length; j++) {
+                hasRemaining = boardArray[i][j][7].equals("false");
+            }
+        }
+        if(hasRemaining){
+            viewPlayerScores();
+        }
+        else{
+            System.out.println("ALL QUESTIONS HAVE BEEN ANSWERED. TIME TO CHECK THE SCORE!");
+            for (int i = 0; i < playerScores.length; i++) {
+                System.out.println(playerNames[i]+": "+playerScores[i]);
+            }
+        }
+    }
+
+    //METHOD FOR EXPERIMENTAL/ CHEAT COMMANDS
+    // *not really necessary, using in order to speed up testing and patching*
+    private static void checkPlayerInput(String playerInput){
+        switch(playerInput){
+            case "disableAllQuestions": disableAllQuestions();
+            case "setPlayerPoints": setPlayerPoints();
+        }
+    }
+    private static void disableAllQuestions(){
+        for (int i = 0; i < boardArray.length; i++) {
+            for (int j = 0; j < boardArray[i].length; j++) {
+                boardArray[i][j][7]="true";
+            }
+        }
+    }
+
+    private static void setPlayerPoints(){
+        String tempPlayerID="";
+        int newPlayerScore = 0;
+        System.out.println("COMMAND AUTHORIZED: enter the player's name");
+        tempPlayerID = input.nextLine();
+        for (int i = 0; i < playerNames.length; i++) {
+            if(tempPlayerID.equals(playerNames[i])){
+                System.out.println("enter the player's new score:");
+                playerScores[i] = input.nextInt();
+                i=playerNames.length;
+            }
+        }
+    }
+
 }
