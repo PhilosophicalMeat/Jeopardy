@@ -1,6 +1,8 @@
+import java.awt.*;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import javax.swing.*;
 public class HellIsReal {
     //SCANNER FOR PLAYER INPUT
     public static Scanner input = new Scanner(System.in);
@@ -13,10 +15,30 @@ public class HellIsReal {
 
     //MAIN METHOD
     public static void main(String[] args) throws FileNotFoundException{
-        System.out.println("Welcome To Jeopardy!");
+        JFrame frame = new JFrame("tempJframeTitle");
+        JPanel panel = new JPanel();
+        frame.setVisible(true);
+        frame.setLayout(new BorderLayout());
+        frame.setSize(500,500);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.add(panel);
+        panel.setSize(500,500);
+        JLabel title01Label = new JLabel("Welcome To Jeopardy!");
+        /*title01Label.setFont(new Font("Serif", Font.BOLD, 25));*/
+        panel.add(title01Label);
+        //creating the combo box used to determine number of players
+        JComboBox playersComboBox = new JComboBox();
+        playersComboBox.addItem("3");
+
+        //TEXT-BASED GAME DECLARATION STUFFS IN THE MAIN METHOD
+        /*System.out.println("Welcome To Jeopardy!");*/
+/*
         getPlayerData();
+*/
         //the good shit
+/*
         getAvailableQuestions();
+*/
     }
 
     //METHOD FOR GETTING TOTAL PLAYERS AND THEIR NAMES
@@ -184,6 +206,8 @@ public class HellIsReal {
             }
         }
     }
+
+
 
     //METHOD FOR EXPERIMENTAL/ CHEAT COMMANDS
     // *not really necessary, using in order to speed up testing and patching*
