@@ -11,34 +11,16 @@ public class HellIsReal {
     public static int totalPlayers=0, turnNumber=0;
     //TOPIC VARIABLE AND ARRAY DECLARATION
     public static String[] topicNames = new String[6], playerNames;
-    public static String[][][] boardArray = new String[6][5][8];//fourth value is boolean stating whether or not the question has been selected
+    public static String[][][] boardArray = new String[6][5][8];//fourth value of second row is a boolean stating whether or not the question has already been selected
 
     //MAIN METHOD
     public static void main(String[] args) throws FileNotFoundException{
-        JFrame frame = new JFrame("tempJframeTitle");
-        JPanel panel = new JPanel();
-        frame.setVisible(true);
-        frame.setLayout(new BorderLayout());
-        frame.setSize(500,500);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.add(panel);
-        panel.setSize(500,500);
-        JLabel title01Label = new JLabel("Welcome To Jeopardy!");
-        /*title01Label.setFont(new Font("Serif", Font.BOLD, 25));*/
-        panel.add(title01Label);
-        //creating the combo box used to determine number of players
-        JComboBox playersComboBox = new JComboBox();
-        playersComboBox.addItem("3");
 
         //TEXT-BASED GAME DECLARATION STUFFS IN THE MAIN METHOD
-        /*System.out.println("Welcome To Jeopardy!");*/
-/*
+        System.out.println("Welcome To Jeopardy!");
         getPlayerData();
-*/
         //the good shit
-/*
         getAvailableQuestions();
-*/
     }
 
     //METHOD FOR GETTING TOTAL PLAYERS AND THEIR NAMES
