@@ -170,12 +170,11 @@ public class HellIsReal {
                     }
                 }
             }
+            if(!foundRequest){
+                System.out.println("INVALID ENTRY; please enter a valid topic");
+                getPlayerRequest();
+            }
         }
-        if(!foundRequest){
-            System.out.println("INVALID ENTRY; please enter a valid topic");
-            getPlayerRequest();
-        }
-        checkRemainingQuestions();
     }
 
     //METHOD FOR CHECKING IF ALL OF THE QUESTIONS HAVE BEEN SELECTED
