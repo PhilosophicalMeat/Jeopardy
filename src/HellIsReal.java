@@ -132,31 +132,39 @@ public class HellIsReal {
         boolean foundRequest = false;
         int CurrentPlayerIndex = (turnNumber%totalPlayers);
         System.out.println(playerNames[CurrentPlayerIndex]+", please select a question (topicName,questionPointValue)");
-        String[]playerRequest = input.nextLine().split(",");
-        //sending the value through a for loop to indentify it
-        for (int i = 0; i < topicNames.length; i++) {
-            if(topicNames[i].toLowerCase().equals(playerRequest[0])){
-                for (int j = 0; j < boardArray[i].length; j++) {
-                    if(boardArray[i][j][0].equals(playerRequest[1])){
-                        foundRequest=true;
-                        if(boardArray[i][j][7].equals("false")){
-                            //printing off the available answers
-                            System.out.println("[one] "+boardArray[i][j][2]+"\n[two] "+boardArray[i][j][3]+"\n[three] "+boardArray[i][j][4]+"\n[four] "+boardArray[i][j][5]);
-                            //prompting the player for their answer
-                            System.out.println(boardArray[i][j][1]+"\n What is your answer, player "+playerNames[CurrentPlayerIndex]+"?");
-                            String playerTempAnswer = input.nextLine();
-                            //if the player's choice is CORRECT
-                            if(playerTempAnswer.equals(boardArray[i][j][6])){
-                                System.out.println("Correct! "+playerNames[CurrentPlayerIndex]+" gains "+boardArray[i][j][0]+" points!\n");
-                                playerScores[CurrentPlayerIndex]+= Integer.parseInt(boardArray[i][j][0]);
-                                boardArray[i][j][7] = "true";
-                                turnNumber+=1;
-                            }
-                            //if the player's choice is INCORRECT
-                            else{
-                                System.out.println("Incorrect!");
-                                boardArray[i][j][7] = "true";
-                                turnNumber += 1;
+        String tempString = input.nextLine();
+        if(tempString.contains("DisableAllQuestions")){
+            disableAllQuestions();
+            System.out.println("command successful");
+            checkRemainingQuestions();
+        }
+        else{
+            String[]playerRequest = tempString.split(",");
+            //sending the value through a for loop to indentify it
+            for (int i = 0; i < topicNames.length; i++) {
+                if(topicNames[i].toLowerCase().equals(playerRequest[0])){
+                    for (int j = 0; j < boardArray[i].length; j++) {
+                        if(boardArray[i][j][0].equals(playerRequest[1])){
+                            foundRequest=true;
+                            if(boardArray[i][j][7].equals("false")){
+                                //printing off the available answers
+                                System.out.println("[one] "+boardArray[i][j][2]+"\n[two] "+boardArray[i][j][3]+"\n[three] "+boardArray[i][j][4]+"\n[four] "+boardArray[i][j][5]);
+                                //prompting the player for their answer
+                                System.out.println(boardArray[i][j][1]+"\n What is your answer, player "+playerNames[CurrentPlayerIndex]+"?");
+                                String playerTempAnswer = input.nextLine();
+                                //if the player's choice is CORRECT
+                                if(playerTempAnswer.equals(boardArray[i][j][6])){
+                                    System.out.println("Correct! "+playerNames[CurrentPlayerIndex]+" gains "+boardArray[i][j][0]+" points!\n");
+                                    playerScores[CurrentPlayerIndex]+= Integer.parseInt(boardArray[i][j][0]);
+                                    boardArray[i][j][7] = "true";
+                                    turnNumber+=1;
+                                }
+                                //if the player's choice is INCORRECT
+                                else{
+                                    System.out.println("Incorrect!");
+                                    boardArray[i][j][7] = "true";
+                                    turnNumber += 1;
+                                }
                             }
                         }
                     }
